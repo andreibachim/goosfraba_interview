@@ -1,0 +1,22 @@
+services: 
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - .:/docker-entrypoint-initdb.d/
+    
+  webservice:
+    image: amazoncorretto:17.0.5
+    environment:
+      - SPRING_R2DBC_URL=r2dbc:postgres://database:5432/postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./../:/app
+    working_dir: /app 
+    command: ./gradlew bootRun
+
+
