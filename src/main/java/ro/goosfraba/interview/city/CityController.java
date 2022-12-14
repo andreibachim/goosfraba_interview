@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class CityController {
     private final CityService service;
 
-    @PutMapping
+    @PostMapping
     public Mono<ResponseEntity<CityDTO>> createCity(@RequestBody @Valid Mono<CreateCityDTO> cityData) {
         return service.saveCity(cityData)
                 .map(ResponseEntity::ok);

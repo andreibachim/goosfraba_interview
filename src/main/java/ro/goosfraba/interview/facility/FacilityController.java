@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FacilityController {
     private final FacilityService service;
-    @PutMapping
+    @PostMapping
     public Mono<ResponseEntity<FacilityDTO>> createParkingFacility(
             @RequestBody
             @Valid

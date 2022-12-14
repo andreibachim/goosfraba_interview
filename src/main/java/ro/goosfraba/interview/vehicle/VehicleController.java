@@ -27,7 +27,7 @@ public class VehicleController {
 
     private final VehicleService service;
 
-    @PutMapping
+    @PostMapping
     public Mono<ResponseEntity<VehicleDTO>> createVehicle(
             @RequestBody
             @Valid
@@ -46,7 +46,7 @@ public class VehicleController {
                 .map(ResponseEntity::ok);
     }
 
-    @PostMapping("/park")
+    @PutMapping("/park")
     public Mono<ResponseEntity<VehicleDTO>> parkVehicle(@RequestBody @Valid ParkVehicleDTO payload) {
       return service.parkVehicle(payload.vehicleId(), payload.facilityId())
               .map(ResponseEntity::ok)
@@ -56,7 +56,7 @@ public class VehicleController {
               .onErrorReturn(NotEnoughCapacityException.class, ResponseEntity.badRequest().build());
     }
 
-    @PostMapping("/unpark")
+    @PutMapping("/unpark")
     public Mono<ResponseEntity<VehicleDTO>> unparkVehicle(@RequestBody @Valid UnparkVehicleDTO payload) {
         return service.unparkVehicle(payload)
                 .map(ResponseEntity::ok);
