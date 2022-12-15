@@ -25,7 +25,7 @@ Start only the database container with ``docker-compose up database`` and run th
 
 Create city
 ```
-curl --request PUT \
+curl --request POST \
 --url http://localhost:8080/city \
 --header 'Content-Type: application/json' \
 --data '{
@@ -36,7 +36,7 @@ curl --request PUT \
 
 Create parking facility
 ```
-curl --request PUT \
+curl --request POST \
   --url http://localhost:8080/facility \
   --header 'Content-Type: application/json' \
   --data '{
@@ -49,7 +49,7 @@ curl --request PUT \
 
 Create vehicle
 ```
-curl --request PUT \
+curl --request POST \
   --url http://localhost:8080/vehicle \
   --header 'Content-Type: application/json' \
   --data '{
@@ -61,7 +61,7 @@ curl --request PUT \
 Park Vehicle
 
 ```
-curl --request POST \
+curl --request PUT \
   --url http://localhost:8080/vehicle/park \
   --header 'Content-Type: application/json' \
   --data '{
